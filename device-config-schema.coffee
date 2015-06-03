@@ -3,14 +3,11 @@ module.exports = {
   Smartmeterdevice: {
     title: "Smartmeter config options"
     type: "object"
-    #properties:
-      ###ip:
-        description: "Smartmeter IP-ddress"
+    properties:
+      ip:
+        description: "Smartmeter Bogus setting"
         format: String
-        default: "10.0.0.0"
-      timeout:
-        description: "Timeout between requests"
-        format: Number
-        default: "60000"###
+        default: "Dummy"
+
   }
 } 
