@@ -34,7 +34,7 @@ module.exports = (env) ->
 
     constructor: (@config) ->
       @id = config.id
-      @name = config.name
+      ## @name = config.name
       @uuid = config.uuid
       super()
 
