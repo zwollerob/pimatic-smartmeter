@@ -1,4 +1,4 @@
-# #Plugin pimatic-youless
+# #Plugin pimatic-smartmeter
 
 module.exports = (env) ->
 
@@ -17,7 +17,7 @@ module.exports = (env) ->
         createCallback: (config) => new Smartmeterdevice(config)
       })      
 
-  class Smartmeterdevice extends Sensor
+  class Smartmeterdevice extends env.devices.Sensor
 
     attributes:
       actualusage:

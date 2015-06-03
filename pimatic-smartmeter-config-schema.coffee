@@ -1,5 +1,5 @@
 module.exports = {
-  title: "Youless"
+  title: "Smartmeter"
   type: "object"
   properties: {}
 }
