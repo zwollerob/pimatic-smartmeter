@@ -33,9 +33,9 @@ module.exports = (env) ->
     counter: 0.0
 
     constructor: (@config) ->
-      @id = config.id
-      @name = config.name
-      @uuid = config.uuid
+      @id = @config.id
+      @name = @config.name
+      @uuid = @config.uuid
       super()
 
       P1DataStream = require "./p1meterdata"
