@@ -37,9 +37,9 @@ module.exports = (env) ->
         type: "number"
         unit: ' kWh'
     actualusage: 0.0
-    currenttariff: 1
-    rate1totalusage: 0.0
-    rate2totalusage: 0.0
+    activetariff: 1
+    tariff1totalusage: 0.0
+    tariff2totalusage: 0.0    
 
     constructor: (@config) ->
       @id = @config.id
@@ -52,14 +52,13 @@ module.exports = (env) ->
       p1datastream.on 'data', (data) =>
         @emit "actualusage", Number data.currentUsage
         @emit "activetariff", Number data.currentTariff
-        @emit "rate1totalusage", Number data.tariffOneTotalUsage
-        @emit "rate2totalusage", Number data.tariffTwoTotalUsage
+        @emit "tariff1totalusage", Number data.tariffOneTotalUsage
+        @emit "tariff2totalusage", Number data.tariffTwoTotalUsage
 
 
     getActualusage: -> Promise.resolve @actualusage
-    getActiveTariff: -> Promis.resolve @activetariff
-    getRate1TotalUsage: -> Promise.resolve @rate1totalusage
-    getRate2TotalUsage: -> Promise.resolve @rate2totalusage
-
+    getActivetariff: -> Promise.resolve @activetariff
+    getTariff1totalusage: -> Promise.resolve @rate1totalusage
+    getTariff2totalusage: -> Promise.resolve @rate2totalusage
   plugin = new Smartmeter
   return plugin

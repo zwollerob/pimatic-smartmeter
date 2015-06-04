@@ -70,8 +70,8 @@ var P1DataStream = function (opts) {
         var currentUsage = returnRegExResult(convertedChunk, /^1-0:1.7.0\((.*?)\*/m);
 
         var dataGram = {
-            rateOneTotalUsage: tariffOneTotalUsage * 1,
-            rateTwoTotalUsage: tariffTwoTotalUsage * 1,
+            tariffOneTotalUsage: tariffOneTotalUsage * 1,
+            tariffTwoTotalUsage: tariffTwoTotalUsage * 1,
             currentTariff: currentTariff * 1,
             currentUsage: currentUsage * 1000
         };
