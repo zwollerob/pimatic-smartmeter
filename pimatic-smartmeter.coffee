@@ -24,29 +24,42 @@ module.exports = (env) ->
         description: "Actual usage"
         type: "number"
         unit: ' Watt'
-      counter:
-        description: "Total energy count"
+      activetariff:
+        description: "Active tariff"
+        type: "number"
+        unit: " 1 or 2"
+      tariff1totalusage:
+        description: "Tariff 1 total usage(T1)"
         type: "number"
         unit: ' kWh'
-
+      tariff2totalusage:
+        description: "Tariff 2 total usage(T2)"
+        type: "number"
+        unit: ' kWh'
     actualusage: 0.0
-    counter: 0.0
+    currenttariff: 1
+    rate1totalusage: 0.0
+    rate2totalusage: 0.0
 
     constructor: (@config) ->
       @id = @config.id
       @name = @config.name
-      @uuid = @config.uuid
+      @portName = @config.serialport
       super()
 
       P1DataStream = require "./p1meterdata"
-      p1datastream = new P1DataStream({portName: "/dev/ttyUSB0"})
+      p1datastream = new P1DataStream({portName: @portName})
       p1datastream.on 'data', (data) =>
         @emit "actualusage", Number data.currentUsage
-        @emit "counter", Number data.rateOneTotalUsage
+        @emit "activetariff", Number data.currentTariff
+        @emit "tariff1totalusage", Number data.tariffOneTotalUsage
+        @emit "tariff2totalusage", Number data.tariffTwoTotalUsage
 
 
     getActualusage: -> Promise.resolve @actualusage
-    getCounter: -> Promise.resolve @counter
+    getActiveRate: -> Promis.resolve @activetariff
+    getRate1TotalUsage: -> Promise.resolve @rate1totalusage
+    getRate2TotalUsage: -> Promise.resolve @rate2totalusage
 
   plugin = new Smartmeter
   return plugin

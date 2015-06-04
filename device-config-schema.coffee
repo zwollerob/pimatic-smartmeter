@@ -4,10 +4,10 @@ module.exports = {
     title: "Smartmeter config options"
     type: "object"
     properties:
-      ip:
-        description: "Smartmeter Bogus setting"
+      serialport:
+        description: "Serialport name (e.g. /dev/ttyUSB0)"
         format: String
-        default: "Dummy"
+        default: "/dev/ttyUSB0"
 
   }
 } 

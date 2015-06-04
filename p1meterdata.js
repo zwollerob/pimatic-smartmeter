@@ -64,14 +64,14 @@ var P1DataStream = function (opts) {
 
         var convertedChunk = new Buffer(data, 'binary').toString('ascii');
 
-        var rateOneTotalUsage = returnRegExResult(convertedChunk, /^1-0:1.8.1\(0+(.*?)\.0+\*/m);
-        var rateTwoTotalUsage = returnRegExResult(convertedChunk, /^1-0:1.8.2\(0+(.*?)\.0+\*/m);
+        var tariffOneTotalUsage = returnRegExResult(convertedChunk, /^1-0:1.8.1\(0+(.*?)\.0+\*/m);
+        var tariffTwoTotalUsage = returnRegExResult(convertedChunk, /^1-0:1.8.2\(0+(.*?)\.0+\*/m);
         var currentTariff = returnRegExResult(convertedChunk, /^0-0:96.14.0\(0+(.*?)\)/m);
         var currentUsage = returnRegExResult(convertedChunk, /^1-0:1.7.0\((.*?)\*/m);
 
         var dataGram = {
-            rateOneTotalUsage: rateOneTotalUsage * 1,
-            rateTwoTotalUsage: rateTwoTotalUsage * 1,
+            rateOneTotalUsage: tariffOneTotalUsage * 1,
+            rateTwoTotalUsage: tariffTwoTotalUsage * 1,
             currentTariff: currentTariff * 1,
             currentUsage: currentUsage * 1000
         };
