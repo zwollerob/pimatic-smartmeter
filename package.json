@@ -3,6 +3,7 @@
   "author": "Saber Karmous <saberone@gmail.com> (https://github.com/saberone)",
   "author_name": "Saber Karmous <saberone@gmail.com> (https://github.com/saberone/)",
   "author_url": "https://github.com/saberone/",
+  "contributors": [ { "name": "Michael Rave"}],
   "npmUser": "saberone",
   "main": "pimatic-smartmeter",
   "files": [
@@ -14,7 +15,7 @@
   ],
   "homepage": "https://github.com/saberone/pimatic-smartmeter.git",
   "keywords": ["pimatic","devices"],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "repository": {
     "type": "git",
@@ -34,5 +35,7 @@
   "engines": {
     "node": ">0.8.x",
     "npm": ">1.1.x"
-  }
+  },
+  "license" : "MIT"
+
 }
