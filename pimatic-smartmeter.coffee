@@ -52,12 +52,12 @@ module.exports = (env) ->
       p1datastream.on 'data', (data) =>
         @emit "actualusage", Number data.currentUsage
         @emit "activetariff", Number data.currentTariff
-        @emit "tariff1totalusage", Number data.tariffOneTotalUsage
-        @emit "tariff2totalusage", Number data.tariffTwoTotalUsage
+        @emit "rate1totalusage", Number data.tariffOneTotalUsage
+        @emit "rate2totalusage", Number data.tariffTwoTotalUsage
 
 
     getActualusage: -> Promise.resolve @actualusage
-    getActiveRate: -> Promis.resolve @activetariff
+    getActiveTariff: -> Promis.resolve @activetariff
     getRate1TotalUsage: -> Promise.resolve @rate1totalusage
     getRate2TotalUsage: -> Promise.resolve @rate2totalusage
 
