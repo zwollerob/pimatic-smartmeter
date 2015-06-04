@@ -3,7 +3,8 @@ pimatic-smartmeter
 
 Reading Smartmeter energy usage through P1 port
 
-##Installation
+Installation
+------------
 To enable the smartmeter plugin add this to the plugins in the config.json file.
 
 ```
@@ -25,7 +26,14 @@ and add the following to the devices
 }
 ```
 
-##Configuration
+Then run the following command from the pimatic-app directory
 
+```
+sudo npm install pimatic-smartmeter from the pimatic-app directory.
+```
+
+
+Configuration
+-------------
 The only configuration you can do currently is what serialport to use. You do this in the plugin section, as you can see in the installation section.
 
