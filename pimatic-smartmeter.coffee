@@ -50,15 +50,27 @@ module.exports = (env) ->
       P1DataStream = require "./p1meterdata"
       p1datastream = new P1DataStream({portName: @portName})
       p1datastream.on 'data', (data) =>
-        @emit "actualusage", Number data.currentUsage
-        @emit "activetariff", Number data.currentTariff
-        @emit "tariff1totalusage", Number data.tariffOneTotalUsage
-        @emit "tariff2totalusage", Number data.tariffTwoTotalUsage
+        if @actualusage != data.currentUsage
+          @actualusage = data.currentUsage
+          @emit "Actual usage", Number @actualusage
+
+        if @activetariff != data.currentTariff
+          @activetariff = data.currentTariff
+          @emit "Active tariff", Number @activetariff
+
+        if @tariff1totalusage != data.tariffOneTotalUsage
+          @tariff1totalusage = data.tariffOneTotalUsage
+          @emit "Total usage T1", Number @tariff1totalusage
+
+        if @tariff2totalusage != data.tariffTwoTotalUsage
+          @tariff2totalusage = data.tariffTwoTotalUsage
+          @emit "Total usage T2", Number @tariff1totalusage
 
 
     getActualusage: -> Promise.resolve @actualusage
     getActivetariff: -> Promise.resolve @activetariff
-    getTariff1totalusage: -> Promise.resolve @rate1totalusage
-    getTariff2totalusage: -> Promise.resolve @rate2totalusage
+    getTariff1totalusage: -> Promise.resolve @tariff1totalusage
+    getTariff2totalusage: -> Promise.resolve @tariff2totalusage
+
   plugin = new Smartmeter
   return plugin
