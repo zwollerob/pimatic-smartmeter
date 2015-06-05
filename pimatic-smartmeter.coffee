@@ -50,20 +50,20 @@ module.exports = (env) ->
       P1DataStream = require "./p1meterdata"
       p1datastream = new P1DataStream({portName: @portName})
       p1datastream.on 'data', (data) =>
-        if @actualusage != data.currentUsage
-          @actualusage = data.currentUsage
+        if @actualusage != Number data.currentUsage
+          @actualusage = Number data.currentUsage
           @emit "Actual usage", Number @actualusage
 
-        if @activetariff != data.currentTariff
-          @activetariff = data.currentTariff
+        if @activetariff != Number data.currentTariff
+          @activetariff = Number data.currentTariff
           @emit "Active tariff", Number @activetariff
 
-        if @tariff1totalusage != data.tariffOneTotalUsage
-          @tariff1totalusage = data.tariffOneTotalUsage
+        if @tariff1totalusage != Number data.tariffOneTotalUsage
+          @tariff1totalusage = Number data.tariffOneTotalUsage
           @emit "Total usage T1", Number @tariff1totalusage
 
-        if @tariff2totalusage != data.tariffTwoTotalUsage
-          @tariff2totalusage = data.tariffTwoTotalUsage
+        if @tariff2totalusage != Number data.tariffTwoTotalUsage
+          @tariff2totalusage = Number data.tariffTwoTotalUsage
           @emit "Total usage T2", Number @tariff1totalusage
 
 
