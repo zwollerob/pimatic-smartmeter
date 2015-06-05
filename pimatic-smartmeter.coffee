@@ -56,11 +56,13 @@ module.exports = (env) ->
         @activetariff = Number data.currentTariff
         @emit "activetariff", Number @activetariff
 
-        @tariff1totalusage = Number data.tariffOneTotalUsage
-        @emit "tariff1totalusage", Number @tariff1totalusage
+        if @tariff1totalusage != Number data.tariffOneTotalUsage
+          @tariff1totalusage = Number data.tariffOneTotalUsage
+          @emit "tariff1totalusage", Number @tariff1totalusage
 
-        @tariff2totalusage = Number data.tariffTwoTotalUsage
-        @emit "@tariff2totalusage", Number @tariff2totalusage
+        if @tariff2totalusage != Number data.tariffTwoTotalUsage
+          @tariff2totalusage = Number data.tariffTwoTotalUsage
+          @emit "tariff2totalusage", Number @tariff2totalusage
 
 
     getActualusage: -> Promise.resolve @actualusage
