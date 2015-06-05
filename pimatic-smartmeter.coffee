@@ -64,7 +64,7 @@ module.exports = (env) ->
 
         if @tariff2totalusage != Number data.tariffTwoTotalUsage
           @tariff2totalusage = Number data.tariffTwoTotalUsage
-          @emit "@tariff1totalusage", Number @tariff1totalusage
+          @emit "@tariff2totalusage", Number @tariff2totalusage
 
 
     getActualusage: -> Promise.resolve @actualusage
