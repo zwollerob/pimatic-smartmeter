@@ -26,11 +26,7 @@ and add the following to the devices
 }
 ```
 
-Then run the following command from the pimatic-app directory:
-
-```
-sudo npm install pimatic-smartmeter
-```
+Then install through the standard pimatic plugin install page.
 
 
 Configuration
