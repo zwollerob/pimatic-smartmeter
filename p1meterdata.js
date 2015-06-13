@@ -4,17 +4,17 @@ var util = require("util");
 var events = require("events");
 
 
-var openSerialPort = function (portName, callback) {
+var openSerialPort = function (opts, callback) {
+
 
     // Setup a SerialPort instance
-    var sp = new SerialPort(portName, {
-        baudRate: 9600,
-        dataBits: 7,
-        parity: 'even',
-        stopBits: 1,
-        flowControl: true,
+    var sp = new SerialPort(opts.portName, {
+        baudRate: opts.baudRate,
+        dataBits: opts.dataBits,
+        parity: opts.parity,
+        stopBits: opts.stopBits,
+        flowControl: opts.flowControl,
         parser: serialport.parsers.raw
-
     }, false);
 
     sp.open(function () {
@@ -57,8 +57,9 @@ function newLineStream(callback) {
 } // newLineStream
 
 var P1DataStream = function (opts) {
-    this.portName = opts.portName;
     var self = this;
+    self.portName = opts.portName;
+
 
     var processDatagram = function (data) {
 
@@ -85,7 +86,7 @@ var P1DataStream = function (opts) {
 
     var listener = newLineStream(processDatagram);
 
-    openSerialPort(this.portName, listener);
+    openSerialPort(opts, listener);
     events.EventEmitter.call(this);
 };
 
