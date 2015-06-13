@@ -43,11 +43,11 @@ module.exports = (env) ->
       @id = @config.id
       @name = @config.name
       @portName = @config.serialport
-      @baudRate: @config.baudRate
-      @dataBits: @config.dataBits
-      @parity: @config.parity
-      @stopBits: @config.stopBits
-      @flowControl: @config.flowControl
+      @baudRate = @config.baudRate
+      @dataBits = @config.dataBits
+      @parity = @config.parity
+      @stopBits = @config.stopBits
+      @flowControl = @config.flowControl
 
       super()
 
