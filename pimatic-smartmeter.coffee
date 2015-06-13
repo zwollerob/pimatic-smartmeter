@@ -1,21 +1,19 @@
 # #Plugin pimatic-smartmeter
 
 module.exports = (env) ->
-
   Promise = env.require 'bluebird'
-  
-#  assert = env.require 'cassert'
+
+  #  assert = env.require 'cassert'
 
   class Smartmeter extends env.plugins.Plugin
 
-    init: (app, @framework, @config) =>      
-
+    init: (app, @framework, @config) =>
       deviceConfigDef = require("./device-config-schema")
 
       @framework.deviceManager.registerDeviceClass("Smartmeterdevice", {
         configDef: deviceConfigDef.Smartmeterdevice,
         createCallback: (config) => new Smartmeterdevice(config)
-      })      
+      })
 
   class Smartmeterdevice extends env.devices.Sensor
 
@@ -39,16 +37,29 @@ module.exports = (env) ->
     actualusage: 0.0
     activetariff: 1
     tariff1totalusage: 0.0
-    tariff2totalusage: 0.0    
+    tariff2totalusage: 0.0
 
     constructor: (@config) ->
       @id = @config.id
       @name = @config.name
       @portName = @config.serialport
+      @baudRate: @config.baudRate,
+      @databits: @config.dataBits,
+      @parity: @config.parity,
+      @stopBits: @config.stopBits,
+      @flowControl: @config.flowControl
+
       super()
 
       P1DataStream = require "./p1meterdata"
-      p1datastream = new P1DataStream({portName: @portName})
+      p1datastream = new P1DataStream({
+        portName: @portName,
+        baudRate: @baudRate,
+        databits: @dataBits,
+        parity: @parity,
+        stopBits: @stopBits,
+        flowControl: @flowControl
+      })
       p1datastream.on 'data', (data) =>
         @actualusage = Number data.currentUsage
         @emit "actualusage", Number @actualusage
