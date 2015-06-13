@@ -5,7 +5,8 @@ var events = require("events");
 
 
 var openSerialPort = function (opts, callback) {
-
+    console.log('serialport options ');
+    console.log(opts);
 
     // Setup a SerialPort instance
     var sp = new SerialPort(opts.portName, {
@@ -58,7 +59,7 @@ function newLineStream(callback) {
 
 var P1DataStream = function (opts) {
     var self = this;
-    self.portName = opts.portName;
+    self.opts = opts;
 
 
     var processDatagram = function (data) {
@@ -86,7 +87,7 @@ var P1DataStream = function (opts) {
 
     var listener = newLineStream(processDatagram);
 
-    openSerialPort(opts, listener);
+    openSerialPort(self.opts, listener);
     events.EventEmitter.call(this);
 };
 

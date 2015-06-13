@@ -55,7 +55,7 @@ module.exports = (env) ->
       p1datastream = new P1DataStream({
         portName: @portName,
         baudRate: @baudRate,
-        databits: @dataBits,
+        dataBits: @dataBits,
         parity: @parity,
         stopBits: @stopBits,
         flowControl: @flowControl
