@@ -21,7 +21,7 @@ module.exports = (env) ->
       actualusage:
         description: "Actual usage"
         type: "number"
-        unit: ' Watt'
+        unit: " Watt"
       activetariff:
         description: "Active tariff"
         type: "number"
@@ -29,11 +29,11 @@ module.exports = (env) ->
       tariff1totalusage:
         description: "Tariff 1 total usage(T1)"
         type: "number"
-        unit: ' kWh'
+        unit: " kWh"
       tariff2totalusage:
         description: "Tariff 2 total usage(T2)"
         type: "number"
-        unit: ' kWh'
+        unit: " kWh"
     actualusage: 0.0
     activetariff: 1
     tariff1totalusage: 0.0
