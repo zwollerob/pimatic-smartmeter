@@ -3,7 +3,7 @@ pimatic-smartmeter
 
 [![Join the chat at https://gitter.im/saberone/pimatic-smartmeter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/saberone/pimatic-smartmeter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Reading Smartmeter energy usage through P1 port
+Reading "Smartmeter" energy usage through P1 port.
 
 Installation
 ------------
