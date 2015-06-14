@@ -15,7 +15,7 @@ var openSerialPort = function (opts, callback) {
         parity: opts.parity,
         stopBits: opts.stopBits,
         flowControl: opts.flowControl,
-        parser: serialport.parsers.raw
+        parser: serialport.parsers.readline("!")
     }, false);
 
     sp.open(function () {
@@ -38,37 +38,16 @@ var returnRegExResult = function (data, regex) {
 
 }; // returnRegExResult
 
-function newLineStream(callback) {
-    var buffer = '';
-
-    return (function (chunk) {
-        convertedChunk = new Buffer(chunk, 'binary').toString('ascii');
-
-        var i,
-            piece = '',
-            offset = 0;
-        buffer += convertedChunk;
-        while ((i = buffer.indexOf('!', offset)) !== -1) {
-            piece = buffer.substr(offset, i - offset);
-            offset = i + 1;
-            callback(piece);
-        }
-        buffer = buffer.substr(offset);
-    });
-} // newLineStream
-
 var P1DataStream = function (opts) {
     var self = this;
     self.opts = opts;
 
+    var listener = function (data) {
 
-    var processDatagram = function (data) {
-
-        var convertedChunk = new Buffer(data, 'binary').toString('ascii');
-        var tariffOneTotalUsage = returnRegExResult(convertedChunk, /^1-0:1\.8\.1\(0+(\d+\.\d+)\*kWh\)/m);
-        var tariffTwoTotalUsage = returnRegExResult(convertedChunk, /^1-0:1\.8\.2\(0+(\d+\.\d+)\*kWh\)/m);
-        var currentTariff = returnRegExResult(convertedChunk, /^0-0:96.14.0\(0+(.*?)\)/m);
-        var currentUsage = returnRegExResult(convertedChunk, /^1-0:1.7.0\((.*?)\*/m);
+        var tariffOneTotalUsage = returnRegExResult(data, /^1-0:1\.8\.1\(0+(\d+\.\d+)\*kWh\)/m);
+        var tariffTwoTotalUsage = returnRegExResult(data, /^1-0:1\.8\.2\(0+(\d+\.\d+)\*kWh\)/m);
+        var currentTariff = returnRegExResult(data, /^0-0:96.14.0\(0+(.*?)\)/m);
+        var currentUsage = returnRegExResult(data, /^1-0:1.7.0\((.*?)\*/m);
 
         var dataGram = {
             tariffOneTotalUsage: tariffOneTotalUsage * 1,
@@ -84,11 +63,8 @@ var P1DataStream = function (opts) {
         self.emit("data", dataGram);
     };
 
-
-    var listener = newLineStream(processDatagram);
-
     openSerialPort(self.opts, listener);
-    events.EventEmitter.call(this);
+    events.EventEmitter.call(self);
 };
 
 util.inherits(P1DataStream, events.EventEmitter);
