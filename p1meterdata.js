@@ -65,9 +65,8 @@ var P1DataStream = function (opts) {
     var processDatagram = function (data) {
 
         var convertedChunk = new Buffer(data, 'binary').toString('ascii');
-
-        var tariffOneTotalUsage = returnRegExResult(convertedChunk, /^1-0:1.8.1\(0+(.*?)\.0+\*/m);
-        var tariffTwoTotalUsage = returnRegExResult(convertedChunk, /^1-0:1.8.2\(0+(.*?)\.0+\*/m);
+        var tariffOneTotalUsage = returnRegExResult(convertedChunk, /^1-0:1\.8\.1\(0+(\d+\.\d+)\*kWh\)/m);
+        var tariffTwoTotalUsage = returnRegExResult(convertedChunk, /^1-0:1\.8\.2\(0+(\d+\.\d+)\*kWh\)/m);
         var currentTariff = returnRegExResult(convertedChunk, /^0-0:96.14.0\(0+(.*?)\)/m);
         var currentUsage = returnRegExResult(convertedChunk, /^1-0:1.7.0\((.*?)\*/m);
 
