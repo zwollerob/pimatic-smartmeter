@@ -78,7 +78,8 @@ var P1DataStream = function (opts) {
         };
 
         console.log('Raw data received: ' + data);
-        //console.log('self' + self.portName);
+        console.log('Parsed data: ');
+        console.log(dataGram);
 
         self.emit("data", dataGram);
     };
