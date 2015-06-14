@@ -64,7 +64,7 @@ var P1DataStream = function (opts) {
     };
 
     openSerialPort(self.opts, listener);
-    events.EventEmitter.call(this);
+    events.EventEmitter.call(self);
 };
 
 util.inherits(P1DataStream, events.EventEmitter);
