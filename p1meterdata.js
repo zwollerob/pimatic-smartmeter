@@ -39,7 +39,8 @@ var returnRegExResult = function (data, regex) {
 }; // returnRegExResult
 
 var P1DataStream = function (opts) {
-    console.log('P1DataStream opts ' + opts);
+    console.log('P1DataStream opts ');
+    console.log(opts);
 
     var self = this;
     self.opts = opts;
