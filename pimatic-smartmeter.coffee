@@ -39,7 +39,9 @@ module.exports = (env) ->
     tariff1totalusage: 0.0
     tariff2totalusage: 0.0
 
-    constructor: (@config) ->
+    constructor: (config) ->
+      @config = config
+
       @id = @config.id
       @name = @config.name
       @portName = @config.serialport
