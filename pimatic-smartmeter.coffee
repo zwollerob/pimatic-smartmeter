@@ -51,6 +51,12 @@ module.exports = (env) ->
 
       super()
 
+
+      if @config.debug
+        env.logger.debug("Smartmeter Config : \"#{config}\"")
+        # env.logger.debug("Smartmeter Config : \"#{config}\"")
+
+
       P1DataStream = require "./p1meterdata"
       p1datastream = new P1DataStream({
         portName: @portName,
