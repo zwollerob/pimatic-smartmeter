@@ -13,12 +13,7 @@ To enable the smartmeter plugin add this to the plugins in the config.json file.
 ...
 {
   "plugin": "smartmeter",
-  "serialport": "/dev/ttyUSB0",
-  "baudRate" : 9600,
-  "dataBits" : 7,
-  "parity" : "even",
-  "stopBits" : 1,
-  "flowControl" : true
+  
 }
 ...
 ```
@@ -30,6 +25,12 @@ and add the following to the devices
   "id": "smartmeter",
   "class": "Smartmeterdevice",
   "name": "smartmeter",
+  "serialport": "/dev/ttyUSB0",
+  "baudRate" : 9600,
+  "dataBits" : 7,
+  "parity" : "even",
+  "stopBits" : 1,
+  "flowControl" : true
 }
 ```
 

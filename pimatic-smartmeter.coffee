@@ -40,7 +40,7 @@ module.exports = (env) ->
     tariff2totalusage: 0.0
 
     constructor: (config) ->
-      super()
+
       @config = config
 
       @id = @config.id
@@ -52,13 +52,14 @@ module.exports = (env) ->
       @stopBits = @config.stopBits
       @flowControl = @config.flowControl
 
+      super()
 
-
-      env.logger.debug ("Smartmeter portName : \"#{@portName}\"")
-      env.logger.debug ("Smartmeter baudRate : \"#{@baudRate}\"")
-      env.logger.debug ("Smartmeter dataBits : \"#{@dataBits}\"")
-      env.logger.debug ("Smartmeter parity : \"#{@parity}\"")
-      env.logger.debug ("Smartmeter stopBits : \"#{@stopBits}\"")
+      if @debug
+        env.logger.debug ("Smartmeter portName : \"#{@portName}\"")
+        env.logger.debug ("Smartmeter baudRate : \"#{@baudRate}\"")
+        env.logger.debug ("Smartmeter dataBits : \"#{@dataBits}\"")
+        env.logger.debug ("Smartmeter parity : \"#{@parity}\"")
+        env.logger.debug ("Smartmeter stopBits : \"#{@stopBits}\"")
 
 
       P1DataStream = require "./p1meterdata"
