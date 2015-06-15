@@ -53,10 +53,11 @@ module.exports = (env) ->
 
       super()
 
-
-      if @config.debug
-        env.logger.debug("Smartmeter Config : \"#{config}\"")
-        # env.logger.debug("Smartmeter Config : \"#{config}\"")
+      env.logger.debug ("Smartmeter portName : \"#{@portName}\"")
+      env.logger.debug ("Smartmeter baudRate : \"#{@baudRate}\"")
+      env.logger.debug ("Smartmeter dataBits : \"#{@dataBits}\"")
+      env.logger.debug ("Smartmeter parity : \"#{@parity}\"")
+      env.logger.debug ("Smartmeter stopBits : \"#{@stopBits}\"")
 
 
       P1DataStream = require "./p1meterdata"
