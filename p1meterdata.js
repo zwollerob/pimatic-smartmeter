@@ -47,8 +47,8 @@ var P1DataStream = function (opts) {
 
     var listener = function (data) {
 
-        var tariffOneTotalUsage = returnRegExResult(data, /^1-0:1\.8\.1\(0+(\d+\.\d+)\*kWh\)/m);
-        var tariffTwoTotalUsage = returnRegExResult(data, /^1-0:1\.8\.2\(0+(\d+\.\d+)\*kWh\)/m);
+        var tariffOneTotalUsage = returnRegExResult(data, /^1-0:1.8.1\(0+(\d+\.\d+)\*kWh\)/m);
+        var tariffTwoTotalUsage = returnRegExResult(data, /^1-0:1.8.2\(0+(\d+\.\d+)\*kWh\)/m);
         var currentTariff = returnRegExResult(data, /^0-0:96.14.0\(0+(.*?)\)/m);
         var currentUsage = returnRegExResult(data, /^1-0:1.7.0\((.*?)\*/m);
 
